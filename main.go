@@ -25,3 +25,11 @@ func main() {
     fmt.Println(responseObject.Content.SHA)
 }
 
+/*
+Todo: 
+    Store ---> responseObject.Content.SHA in a file.
+    @START ---> read content in the file and perform the request
+    Add argv for user and repository
+    Write the conditions
+*/
+
