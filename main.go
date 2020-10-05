@@ -4,16 +4,24 @@ import (
     "fmt"
     "net/http"
     "io/ioutil"
+    "encoding/json"
 )
 func main() {
-    res, err := http.Get("http://api.github.com/users/joaoofreitas")
-
-    if err != nil {
-	fmt.Println(err)
+    type CommitSHA struct {
+	SHA string `json:"sha"`
+    }
+    type Response struct {
+	Content CommitSHA `json:"object"`
     }
 
-    reponseData, _ := ioutil.ReadAll(res.Body)
-    fmt.Println(string(reponseData))
+    res, _ := http.Get("http://api.github.com/repos/joaoofreitas/vue-portfolio/git/refs/heads/master") 
 
+    responseInBytes, _ := ioutil.ReadAll(res.Body)
+    //responseInStr := string(responseInBytes)
+
+    var responseObject Response
+    json.Unmarshal(responseInBytes, &responseObject)
+
+    fmt.Println(responseObject.Content.SHA)
 }
 
