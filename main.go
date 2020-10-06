@@ -5,6 +5,8 @@ import (
     "net/http"
     "io/ioutil"
     "encoding/json"
+    "os"
+    "os/exec"
 )
 
 func getCommitSHA(url string) string{ 
@@ -22,16 +24,28 @@ func getCommitSHA(url string) string{
     var responseObject Response
     json.Unmarshal(responseInBytes, &responseObject)
 
-    fmt.Println(responseObject.Content.SHA)
+    //fmt.Println(responseObject.Content.SHA)
     return string(responseObject.Content.SHA)
 }
+
+func runCommand(commands ...string){
+    arr := []int{}
+    for i := len(commands) - 1; i >= 0; i-- {
+	arr = append(arr, i)
+    }
+    fmt.Println(arr)
+    cmd := exec.Command(commands[arr[]], commands[len(commands) -1])
+    cmd.Stdout = os.Stdout
+    cmd.Run()
+}
+
 func main() {
 
     file, _ := ioutil.ReadFile("sha")
     commit := getCommitSHA("http://api.github.com/repos/joaoofreitas/vue-portfolio/git/refs/heads/master")
 
     if string(file) != commit{
-	// Run Update Function
+	runCommand("ls", "-lah")
 	fmt.Println("There are some changes, updating containers...")
 	ioutil.WriteFile("sha", []byte(commit), 0644)
     } else {
@@ -44,6 +58,7 @@ func main() {
 Todo: 
     Store ---> responseObject.Content.SHA in a file. DONE
     @START ---> read content in the file and perform the request DONE
+    Change ---> Run commands as run a script.
     Add argv for user and repository
     Write the conditions
 */
