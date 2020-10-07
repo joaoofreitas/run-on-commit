@@ -35,11 +35,14 @@ func runScript(script string){
 }
 
 func main() {
-    scriptFile := flag.String("file", "", "USAGE: ./main -file <nameofthefile>") 
+    scriptFile := flag.String("file", "", "-file <nameofthefile>") 
+    username := flag.String("user", "", "-user <githubusername>")
+    repositoryName := flag.String("repo", "", "-repo <nameofrepository>")
+
     flag.Parse()
 
     file, _ := ioutil.ReadFile("sha")
-    commit := getCommitSHA("http://api.github.com/repos/joaoofreitas/vue-portfolio/git/refs/heads/master")
+    commit := getCommitSHA("http://api.github.com/repos/" + *username + "/" + *repositoryName +"/git/refs/heads/master")
 
     if string(file) != commit {
 	fmt.Println("There are some changes, updating containers...")
