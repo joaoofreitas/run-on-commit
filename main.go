@@ -7,9 +7,10 @@ import (
     "encoding/json"
     "os"
     "os/exec"
+    "flag"
 )
 
-func getCommitSHA(url string) string{ 
+func getCommitSHA(url string) string{
     type CommitSHA struct {
 	SHA string `json:"sha"`
     }
@@ -17,46 +18,37 @@ func getCommitSHA(url string) string{
 	Content CommitSHA `json:"object"`
     }
 
-    res, _ := http.Get(url) 
+    res, _ := http.Get(url)
 
     responseInBytes, _ := ioutil.ReadAll(res.Body)
 
     var responseObject Response
     json.Unmarshal(responseInBytes, &responseObject)
 
-    //fmt.Println(responseObject.Content.SHA)
     return string(responseObject.Content.SHA)
 }
 
-func runScript(script string){ 
+func runScript(script string){
     cmd := exec.Command("./" + script)
     cmd.Stdout = os.Stdout
     cmd.Run()
 }
 
-
 func main() {
+    scriptFile := flag.String("file", "", "USAGE: ./main -file <nameofthefile>") 
+    flag.Parse()
 
     file, _ := ioutil.ReadFile("sha")
     commit := getCommitSHA("http://api.github.com/repos/joaoofreitas/vue-portfolio/git/refs/heads/master")
 
-    if string(file) != commit{	
+    if string(file) != commit {
 	fmt.Println("There are some changes, updating containers...")
 	ioutil.WriteFile("sha", []byte(commit), 0644)
 
-	runScript("script.sh")
+	runScript(*scriptFile)
     } else {
 	fmt.Println("Nothing changed...Exiting")
     }
 
 }
-
-/*
-Todo: 
-    Store ---> responseObject.Content.SHA in a file. DONE
-    @START ---> read content in the file and perform the request DONE
-    Change ---> Run commands as run a script and not a command. DONE
-    Add argv for user and repository
-    Write the conditions
-*/
 
