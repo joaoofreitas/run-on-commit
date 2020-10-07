@@ -1,3 +1,4 @@
 # Run On Commit ⬆️
 
-Under development! 🚧
+Documentation on Progress! 🚧
+
