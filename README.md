@@ -1,3 +1,3 @@
-# Upgrade On Commit ⬆️
+# Run On Commit ⬆️
 
 Under development! 🚧
