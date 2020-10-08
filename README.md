@@ -41,10 +41,9 @@ Also, this is my first project in [Go](https://golang.org/).
 
   `./main -file <nameOfTheScript> -user <githubUsername> -repo <nameOfRepository>`
 
-### Maintenance and Future Developement
+### Maintenance and Future Developement ℹ️
 
   If you have any concerns, errors, or if you want more features feel free to open an issue, or even contact me on [Twitter](https://twitter.com/joaoofreitas_).
-
   
 
 

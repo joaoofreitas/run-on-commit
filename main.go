@@ -33,7 +33,7 @@ func getCommitSHA(url string) string{
     var responseObject Response
     json.Unmarshal(responseInBytes, &responseObject)
     if len(responseObject.Content.SHA) == 0{
-	fmt.Println("The username or the repository flagged does not exist. Please check the username and the repository name")
+	fmt.Println("The username or the repository flagged does not exist. Please check the username and the repository name.")
 	os.Exit(3)
     }
     return string(responseObject.Content.SHA)
