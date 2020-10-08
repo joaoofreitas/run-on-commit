@@ -6,7 +6,7 @@
 Run-on Commit is a fast, compiled and minimal server-side program that runs a script of your choice when there's a new commit to a GitHub public repository.
 
 ### Lore and Purpose 🤠 
-What motivated me to build this repository is the deployment and self-update of my website. I use this program to self-update my docker containers that run instances of my web [portfolio](https://github.com/joaoofreitas/vue-portfolio).
+What motivated me to build this repository is the deployment and self-update of my website. I use this program with crontab to self-update my docker containers that run instances of my web [portfolio](https://github.com/joaoofreitas/vue-portfolio).
 
 But this program can have other purposes such has run your scripts every time there's a new commit in a repository.
 
