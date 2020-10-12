@@ -37,7 +37,11 @@ Also, this is my first project in [Go](https://golang.org/).
 
   __Example:__
 
-  `./main -file <nameOfTheScript> -user <githubUsername> -repo <nameOfRepository>`
+  `./main -mem <shafile> -file <nameOfTheScript> -user <githubUsername> -repo <nameOfRepository>`
+
+  __Raw Example__
+  
+  `.main -mem sha -file script.sh -user joaoofreitas -repo markdown-webserver`
 
 ### Maintenance and Future Developement ℹ️
 
