@@ -1,7 +1,5 @@
 # Run On Commit ⬆️
 
-#### On Progress! 🚧
-
 ### What is this? 🤔
 Run-on Commit is a fast, compiled and minimal server-side program that runs a script of your choice when there's a new commit to a GitHub public repository.
 
