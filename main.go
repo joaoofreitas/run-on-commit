@@ -46,13 +46,14 @@ func runScript(script string){
 }
 
 func main() {
+    sha := flag.String("mem", "memory", "-mem <shafilelocation>")
     scriptFile := flag.String("file", "", "-file <nameofthefile>")
     username := flag.String("user", "", "-user <githubusername>")
     repositoryName := flag.String("repo", "", "-repo <nameofrepository>")
 
     flag.Parse()
 
-    file, err := ioutil.ReadFile("sha")
+    file, err := ioutil.ReadFile(*sha)
 
     if err != nil {
 	fmt.Println("Error reading the SHA memory file. Please check if the sha file exists")
@@ -64,7 +65,7 @@ func main() {
 
     if string(file) != commit {
 	fmt.Println("There are some changes, updating containers...")
-	ioutil.WriteFile("sha", []byte(commit), 0644)
+	ioutil.WriteFile(*sha, []byte(commit), 0644)
 
 	runScript(*scriptFile)
     } else {
