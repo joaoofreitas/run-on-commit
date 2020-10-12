@@ -1,5 +1,3 @@
-# Run On Commit ⬆️
-
 ### What is this? 🤔
 Run-on Commit is a fast, compiled and minimal server-side program that runs a script of your choice when there's a new commit to a GitHub public repository.
 
@@ -41,11 +39,8 @@ Also, this is my first project in [Go](https://golang.org/).
 
   __Raw Example__
   
-  `.main -mem sha -file script.sh -user joaoofreitas -repo markdown-webserver`
+  `./main -mem sha -file script.sh -user joaoofreitas -repo markdown-webserver`
 
 ### Maintenance and Future Developement ℹ️
 
   If you have any concerns, errors, or if you want more features feel free to open an issue, or even contact me on [Twitter](https://twitter.com/joaoofreitas_).
-  
-
-
